@@ -1,5 +1,6 @@
 require 'advanced_reporting_hooks'
-include Ruport
+require "ruport"
+#require "ruport/util"
 
 module Spree
   module AdvancedReporting
