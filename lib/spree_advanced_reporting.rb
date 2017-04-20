@@ -1,9 +1,10 @@
 require 'advanced_reporting_hooks'
-require "ruport"
-#require "ruport/util"
 
 module Spree
   module AdvancedReporting
+
+    include Ruport
+    
     class Engine < Rails::Engine
       config.autoload_paths += %W(#{config.root}/lib)
       def self.activate
