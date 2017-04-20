@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency('spree_core', '~> 3.1.0')
   s.add_dependency('spree_account_subscription')
-  s.add_dependency('ruport', '~> 1.7.0')
+  s.add_dependency('ruport', '~> 1.6.3')
   s.add_dependency('ruport-util') #, :lib => 'ruport/util')
 end
