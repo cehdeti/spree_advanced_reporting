@@ -1,6 +1,5 @@
 module Spree
   class AdvancedReport
-    include Ruport
     attr_accessor :orders, :product_text, :date_text, :taxon_text, :ruportdata, :data, :params, :taxon, :product, :product_in_taxon, :unfiltered_params, :subscriptions, :subscription_seats
 
     def name
