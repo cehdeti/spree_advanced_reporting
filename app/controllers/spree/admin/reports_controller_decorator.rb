@@ -1,6 +1,6 @@
 Spree::Admin::ReportsController.class_eval do
-  before_filter :add_own
-  before_filter :basic_report_setup, :actions => [:daily_details, :profit, :revenue, :units, :top_products, :top_customers, :geo_revenue, :geo_units, :count]
+  before_action :add_own
+  before_action :basic_report_setup, :actions => [:daily_details, :profit, :revenue, :units, :top_products, :top_customers, :geo_revenue, :geo_units, :count]
 
   def add_own
     return if Spree::Admin::ReportsController::available_reports.has_key?(:geo_profit)
