@@ -1,19 +1,27 @@
 Spree::Admin::ReportsController.class_eval do
   before_action :add_own
-  before_action :basic_report_setup, :actions => [:daily_details, :profit, :revenue, :units, :top_products, :top_customers, :geo_revenue, :geo_units, :count]
+  before_action :basic_report_setup, only: [:daily_details, :profit, :revenue, :units, :top_products, :top_customers, :geo_revenue, :geo_units, :count]
 
-  def add_own
-    return if Spree::Admin::ReportsController::available_reports.has_key?(:geo_profit)
-    Spree::Admin::ReportsController::available_reports.merge!(ADVANCED_REPORTS)
-  end
+  ADVANCED_REPORTS = [
+    :daily_details,
+    :revenue,
+    :units,
+    :profit,
+    :count,
+    :top_products,
+    :top_customers,
+    :geo_revenue,
+    :geo_units,
+    :geo_profit
+  ].map do |x|
+    [x, { name: I18n.t("adv_report.#{x}"), description: I18n.t("adv_report.#{x}") }]
+  end.to_h.freeze
   I18n.locale = Rails.application.config.i18n.default_locale
   I18n.reload!
 
-  ADVANCED_REPORTS ||= {}
-  [ :daily_details, :revenue, :units, :profit, :count, :top_products, :top_customers, :geo_revenue, :geo_units, :geo_profit].each do |x|
-    ADVANCED_REPORTS[x]= {name: I18n.t("adv_report."+x.to_s), :description => I18n.t("adv_report."+x.to_s)}
+  def add_own
+    Spree::Admin::ReportsController.available_reports.merge!(ADVANCED_REPORTS)
   end
-
 
   def basic_report_setup
     @reports = ADVANCED_REPORTS
