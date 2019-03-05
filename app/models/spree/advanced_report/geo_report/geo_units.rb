@@ -1,14 +1,6 @@
 class Spree::AdvancedReport::GeoReport::GeoUnits < Spree::AdvancedReport::GeoReport
-  def name
-    "Units Sold by Geography"
-  end
-
   def column
     "Units"
-  end
-
-  def description
-    "Unit sales divided geographically, into states and countries"
   end
 
   def initialize(params)

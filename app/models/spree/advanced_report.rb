@@ -1,15 +1,24 @@
 module Spree
   class AdvancedReport
     include Ruport
-    attr_accessor :orders, :product_text, :date_text, :taxon_text, :ruportdata, :data, :params, :taxon, :product, :product_in_taxon, :unfiltered_params
 
-    def name
-      "Base Advanced Report"
-    end
+    REPORTS = [
+      :daily_details,
+      :revenue,
+      :units,
+      :profit,
+      :count,
+      :top_products,
+      :top_customers,
+      :geo_revenue,
+      :geo_units,
+      :geo_profit,
+      :order_details
+    ]
 
-    def description
-      "Base Advanced Report"
-    end
+    attr_accessor :orders, :product_text, :date_text, :taxon_text, :ruportdata,
+                  :data, :params, :taxon, :product, :product_in_taxon,
+                  :unfiltered_params
 
     def initialize(params)
       self.params = params

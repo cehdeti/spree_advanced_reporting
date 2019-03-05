@@ -1,0 +1,63 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:reports), spree.admin_reports_url %> /
+  <%= Spree.t(action_name) %>
+  <small><%= Spree.t("#{action_name}_description") %></small>
+<% end %>
+
+<div class="well">
+  <%= form_tag({}, method: :get) do %>
+    <div class="form-group date-range-filter">
+      <%= label_tag nil, Spree.t(:date_range) %>
+      <div class="date-range-filter row">
+        <div class="col-md-6">
+          <%= text_field_tag 'begin_date',
+            (Time.now - 1.month).beginning_of_day.strftime('%Y/%m/%d'),
+            class: 'datepicker datepicker-from form-control',
+            required: true
+          %>
+        </div>
+        <div class="col-md-6">
+          <%= text_field_tag 'end_date',
+            Time.now.end_of_day.strftime('%Y/%m/%d'),
+            class: 'datepicker datepicker-to form-control',
+            required: true
+          %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= button Spree.t(:search), 'search' %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'Download CSV', params.to_unsafe_h.merge(url: spree.order_details_admin_reports_path, format: 'csv') %>
+
+<table class="table table-bordered admin-report">
+  <thead>
+    <tr>
+      <th>Order Number</th>
+      <th>Completed</th>
+      <th><%= Spree.t(:sku) %></th>
+      <th><%= Spree.t(:quantity) %></th>
+      <th>Unit Price</th>
+      <th>Amount</th>
+      <th>Tranaction ID</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @report.line_items.each do |line| %>
+      <tr>
+        <td><%= line.number %></td>
+        <td><%= line.completed_date %></td>
+        <td><%= line.sku %></td>
+        <td><%= line.quantity %></td>
+        <td><%= line.unit_price %></td>
+        <td><%= line.amount %></td>
+        <td><%= line.transaction_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

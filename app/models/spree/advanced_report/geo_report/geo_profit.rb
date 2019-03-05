@@ -1,14 +1,6 @@
 class Spree::AdvancedReport::GeoReport::GeoProfit < Spree::AdvancedReport::GeoReport
-  def name
-    "Profit by Geography"
-  end
-
   def column
     "Profit"
-  end
-
-  def description
-    "Profit divided geographically, into states and countries"
   end
 
   def initialize(params)

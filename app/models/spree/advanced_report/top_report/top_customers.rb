@@ -1,12 +1,4 @@
 class Spree::AdvancedReport::TopReport::TopCustomers < Spree::AdvancedReport::TopReport
-  def name
-    "Top Customers"
-  end
-
-  def description
-    "Top purchasing customers, calculated by revenue"
-  end
-
   def initialize(params, limit)
     super(params)
 

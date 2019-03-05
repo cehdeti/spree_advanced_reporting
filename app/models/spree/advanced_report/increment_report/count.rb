@@ -1,14 +1,6 @@
 class Spree::AdvancedReport::IncrementReport::Count < Spree::AdvancedReport::IncrementReport
-  def name
-    "Order Count"
-  end
-
   def column
     "Count"
-  end
-
-  def description
-    "Total number of completed orders"
   end
 
   def initialize(params)

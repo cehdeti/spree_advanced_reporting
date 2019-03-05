@@ -1,9 +1,7 @@
 <% content_for :page_title do %>
-  <%= Spree.t('adv_report.' + @report.name.downcase) %> &middot; <small><%= @report.description %></small>
-<% end %>
-
-<% content_for :page_actions do %>
-    <li><%= link_to_with_icon 'icon-arrow-left', Spree.t(:back_to_reports_list), spree.admin_reports_url, :class => 'button' %></li>
+  <%= link_to Spree.t(:reports), spree.admin_reports_url %> /
+  <%= Spree.t(action_name) %>
+  <small><%= Spree.t("#{action_name}_description") %></small>
 <% end %>
 
 <% content_for :sidebar_title do %>

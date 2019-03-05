@@ -1,14 +1,6 @@
 class Spree::AdvancedReport::IncrementReport::Profit < Spree::AdvancedReport::IncrementReport
-  def name
-    "Profit"
-  end
-
   def column
     "Profit"
-  end
-
-  def description
-    "Total order profit is the sum of item quantity, times item price, minus item cost"
   end
 
   def initialize(params)

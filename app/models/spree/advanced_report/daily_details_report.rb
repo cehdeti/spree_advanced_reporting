@@ -1,16 +1,8 @@
 class Spree::AdvancedReport::DailyDetailsReport < Spree::AdvancedReport::IncrementReport
   attr_accessor :date, :products, :shipments, :tax_adjustments, :price_adjustments, :other_adjustments, :orders, :payments
 
-  def name
-    "Detailed Units Sold"
-  end
-
   def column
     "Detailed Units"
-  end
-
-  def description
-    "Total units sold in orders, a sum of the item quantities per order or per item"
   end
 
   def initialize(params)

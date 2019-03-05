@@ -1,14 +1,23 @@
 en:
-  adv_report:
+  spree:
     revenue: "Revenue"
-    units: "Units"
+    revenue_description: "The sum of order item prices, excluding shipping and tax"
+    units: "Units Sold"
+    units_description: "Total units sold in orders, a sum of the item quantities per order or per item"
     profit: "Profit"
+    profit_description: "Total order profit is the sum of item quantity, times item price, minus item cost"
     count: "Order Count"
+    count_description: "Total number of completed orders"
     top_products: "Top Products"
+    top_products_description: "Top selling products, calculated by revenue"
     top_customers: "Top Customers"
-    submit: "Submit"
-    geo_revenue: "Geo Revenue"
-    geo_units: "Geo Units"
-    geo_profit: "Geo Profit"
-    sales_total: 'Sales Total'
+    top_customers_description: "Top purchasing customers, calculated by revenue"
+    geo_revenue: "Revenue by Geography"
+    geo_revenue_description: "Revenue divided geographically, into states and countries"
+    geo_units: "Units Sold by Geography"
+    geo_units_description: "Unit sales divided geographically, into states and countries"
+    geo_profit: "Profit by Geography"
+    geo_profit_description: "Profit divided geographically, into states and countries"
     daily_details: 'Daily Sales Detail'
+    daily_details_description: 'All credit card payments that were captured on a given date'
+    order_details: "Order Details"

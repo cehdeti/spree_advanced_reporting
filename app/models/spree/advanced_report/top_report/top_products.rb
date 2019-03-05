@@ -1,12 +1,4 @@
 class Spree::AdvancedReport::TopReport::TopProducts < Spree::AdvancedReport::TopReport
-  def name
-    "Top Selling Products by Revenue"
-  end
-
-  def description
-    "Top selling products, calculated by revenue"
-  end
-
   def initialize(params, limit)
     super(params)
 

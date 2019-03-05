@@ -1,13 +1,7 @@
 <% content_for :page_title do %>
-  <%= Spree.t('adv_report.' + @report.name.downcase) %> &middot; <small><%= @report.description %></small>
-<% end %>
-
-<% content_for :page_actions do %>
-    <li><%= link_to_with_icon 'icon-arrow-left', Spree.t(:back_to_reports_list), spree.admin_reports_url, :class => 'button' %></li>
-<% end %>
-
-<% content_for :sidebar_title do %>
-  <% Spree.t(:report_details) %>
+  <%= link_to Spree.t(:reports), spree.admin_reports_url %> /
+  <%= Spree.t(action_name) %>
+  <small><%= Spree.t("#{action_name}_description") %></small>
 <% end %>
 
 <% content_for :sidebar do %>
@@ -56,7 +50,7 @@
         <% @report.increments.each do |type| %>
             var data_<%= type.to_s %> = new google.visualization.DataTable();
             data_<%= type.to_s %>.addColumn('string', 'Display');
-            data_<%= type.to_s %>.addColumn('number', '<%= @report.name %>');
+            data_<%= type.to_s %>.addColumn('number', '<%= Spree.t(action_name) %>');
             data_<%= type.to_s %>.addRows(<%= @report.ruportdata[type].size %>);
           <% @report.ruportdata[type].each_with_index do |p, i| %>
             data_<%= type.to_s %>.setValue(<%= i.to_s %>, 0, "<%= p.data[type.to_s.capitalize] %>");
@@ -68,18 +62,18 @@
                 height: 400,
                 legend: 'none',
                 hAxis: { slantedText: true, slantedTextAngle: 30 },
-                title: '<%= type.to_s.capitalize + ' ' + @report.name %>'
+                title: "<%= type.to_s.capitalize %> <%= Spree.t(action_name) %>"
             });
         <% end %>
         }
     </script>
 <% end %>
 
-<%= render :partial => 'spree/admin/reports/advanced_report_criteria', :locals => {} %>
+<%= render partial: 'spree/admin/reports/advanced_report_criteria', locals: {} %>
 
 <% @report.increments.each do |type| %>
-    <div id="<%= type.to_s %>_data" <%= 'style=display:none;' if type.to_s != 'daily' %> class="advanced_reporting_data">
-        <div id="<%= type.to_s %>_chart"></div>
-        <%= raw @report.ruportdata[type].to_html %>
-    </div>
+  <div id="<%= type.to_s %>_data" <%= 'style=display:none;' if type.to_s != 'daily' %> class="advanced_reporting_data">
+    <div id="<%= type.to_s %>_chart"></div>
+    <%= raw @report.ruportdata[type].to_html %>
+  </div>
 <% end %>
