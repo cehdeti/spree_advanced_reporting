@@ -32,7 +32,7 @@
   <% end %>
 </div>
 
-<%= link_to 'Download CSV', params.to_unsafe_h.merge(url: spree.order_details_admin_reports_path, format: 'csv') %>
+<%= link_to 'Download CSV', params.to_unsafe_h.merge(format: 'csv') %>
 
 <table class="table table-bordered admin-report">
   <thead>
