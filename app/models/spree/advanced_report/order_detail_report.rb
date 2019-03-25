@@ -56,7 +56,7 @@ class Spree::AdvancedReport::OrderDetailReport < Spree::AdvancedReport
         lines << ReportLine.new(
           order.number,
           order.completed_at.strftime('%m/%d/%Y'),
-          shipment.shipping_method.try(:name) || 'Unknown',
+          shipment.shipping_method.try(:name) || 'Unknown shipping method',
           nil,
           nil,
           shipment.cost.to_f,
