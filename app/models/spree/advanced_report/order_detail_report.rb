@@ -39,7 +39,7 @@ class Spree::AdvancedReport::OrderDetailReport < Spree::AdvancedReport
       end
 
       # Tax and whole-order adjustments
-      order.all_adjustments.each do |adj|
+      order.all_adjustments.eligible.each do |adj|
         lines << ReportLine.new(
           order.number,
           order.completed_at.strftime('%m/%d/%Y'),
