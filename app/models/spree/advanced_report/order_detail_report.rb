@@ -52,7 +52,7 @@ class Spree::AdvancedReport::OrderDetailReport < Spree::AdvancedReport
       end
 
       # Shipments
-      order.shipments.each do |shipment|
+      order.shipments.where('cost > 0').each do |shipment|
         lines << ReportLine.new(
           order.number,
           order.completed_at.strftime('%m/%d/%Y'),
