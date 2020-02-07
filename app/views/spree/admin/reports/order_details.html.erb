@@ -34,30 +34,42 @@
 
 <%= link_to 'Download CSV', params.to_unsafe_h.merge(format: 'csv') %>
 
-<table class="table table-bordered admin-report">
-  <thead>
-    <tr>
-      <th>Order Number</th>
-      <th>Completed</th>
-      <th><%= Spree.t(:sku) %></th>
-      <th><%= Spree.t(:quantity) %></th>
-      <th>Unit Price</th>
-      <th>Amount</th>
-      <th>Tranaction ID</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @report.line_items.each do |line| %>
+<div class="table-responsive">
+  <table class="table table-bordered admin-report">
+    <thead>
       <tr>
-        <td><%= line.number %></td>
-        <td><%= line.completed_date %></td>
-        <td><%= line.sku %></td>
-        <td><%= line.quantity %></td>
-        <td><%= line.unit_price %></td>
-        <td><%= line.amount %></td>
-        <td><%= line.transaction_id %></td>
+        <th>Order Number</th>
+        <th>Completed</th>
+        <th>Company</th>
+        <th>Address</th>
+        <th><%= Spree.t(:sku) %></th>
+        <th><%= Spree.t(:quantity) %></th>
+        <th>Unit Price</th>
+        <th>Amount</th>
+        <th>Transaction ID</th>
+        <th>Subscription ID</th>
+        <th>Token</th>
+        <th>Subscription Expiration</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @report.line_items.each do |line| %>
+        <tr>
+          <td><%= line.number %></td>
+          <td><%= line.completed_date %></td>
+          <td><%= line.company %></td>
+          <td><%= line.billing_address %></td>
+          <td><%= line.sku %></td>
+          <td><%= line.quantity %></td>
+          <td><%= line.unit_price %></td>
+          <td><%= line.amount %></td>
+          <td><%= line.transaction_id %></td>
+          <td><%= line.subscription_id %></td>
+          <td><%= line.subscription_token %></td>
+          <td><%= line.subscription_expiration %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
