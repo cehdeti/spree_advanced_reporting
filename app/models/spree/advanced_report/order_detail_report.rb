@@ -56,7 +56,7 @@ class Spree::AdvancedReport::OrderDetailReport < Spree::AdvancedReport
   def to_csv
     lines = line_items.collect(&:values)
     CSV.generate do |csv|
-      csv << %w[number completed_date sku quantity unit_price amount transaction_id]
+      csv << %w[number completed_date company billing_address sku quantity unit_price amount transaction_id subscription_id subscription_token subscription_expiration]
       lines.each { |li| csv << li }
     end
   end
