@@ -25,6 +25,10 @@
         </div>
       </div>
     </div>
+    <div class="form-group">
+    <%= t :products %>: <%= collection_select(:advanced_reporting, :product_id, @products, :id, :name, { :include_blank => 'All' } ) %><br />
+    </div>
+
 
     <div class="form-actions">
       <%= button Spree.t(:search), 'search' %>

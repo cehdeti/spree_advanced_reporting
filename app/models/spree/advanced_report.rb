@@ -17,7 +17,7 @@ module Spree
     ]
 
     attr_accessor :orders, :product_text, :date_text, :taxon_text, :ruportdata,
-                  :data, :params, :taxon, :product, :product_in_taxon,
+                  :data, :params, :taxon, :product, :group, :product_in_taxon,
                   :unfiltered_params
 
     def initialize(params)

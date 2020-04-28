@@ -7,6 +7,8 @@ class Spree::AdvancedReport::OrderDetailReport < Spree::AdvancedReport
       @begin_date = report_params[:begin_date]
       @end_date = report_params[:end_date]
     end
+
+      
   end
 
   def line_items
@@ -89,9 +91,9 @@ class Spree::AdvancedReport::OrderDetailReport < Spree::AdvancedReport
       line_item.price.to_f,
       (line_item.price * line_item.quantity).to_f,
       transaction_id,
-      subscription.presence ? subscription.id : '',
-      subscription.presence ? subscription.token : '',
-      subscription.presence ? subscription.end_datetime.strftime('%m/%d/%Y') : '',
+      (line_item.product.subscribable? and subscription.present?) ? subscription.id : '',
+      (line_item.product.subscribable? and subscription.present?) ? subscription.token : '',
+      (line_item.product.subscribable? and subscription.present?) ? subscription.end_datetime.strftime('%m/%d/%Y') : '',
     )
   end
 
@@ -106,9 +108,9 @@ class Spree::AdvancedReport::OrderDetailReport < Spree::AdvancedReport
       nil,
       adj.amount.to_f,
       transaction_id,
-      subscription.presence ? subscription.id : '',
-      subscription.presence ? subscription.token : '',
-      subscription.presence ? subscription.end_datetime.strftime('%m/%d/%Y') : '',
+      adj.renewing_subscription_id.presence ? subscription.id : '',
+      adj.renewing_subscription_id.presence ? subscription.token : '',
+      adj.renewing_subscription_id.presence ? subscription.end_datetime.strftime('%m/%d/%Y') : '',
     )
   end
 
@@ -123,9 +125,9 @@ class Spree::AdvancedReport::OrderDetailReport < Spree::AdvancedReport
       nil,
       shipment.cost.to_f,
       transaction_id,
-      subscription.presence ? subscription.id : '',
-      subscription.presence ? subscription.token : '',
-      subscription.presence ? subscription.end_datetime.strftime('%m/%d/%Y') : '',
+      nil,
+      nil,
+      nil,
     )
   end
 end
