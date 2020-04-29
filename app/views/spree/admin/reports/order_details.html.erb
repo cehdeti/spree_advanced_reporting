@@ -24,11 +24,19 @@
           %>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-4">
+          <%= t :groups %>: <%= collection_select(:advanced_reporting, :group_id, @groups, :id, :title, { :include_blank => 'All' }, {:class => 'form-control' } ) %><br />
+        </div>
+        <div class="col-md-4">
+          <%= t :products %>: <%= collection_select(:advanced_reporting, :product_id, @products, :id, :name, { :include_blank => 'All' }, {:class => 'form-control' } ) %><br />
+        </div>
+        <div class="col-md-4">
+          <span>Is subscribable?</span>
+          <%= check_box_tag 'subscribable', 'subscribable', false, {:class => 'form-check-input'} %>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-    <%= t :products %>: <%= collection_select(:advanced_reporting, :product_id, @products, :id, :name, { :include_blank => 'All' } ) %><br />
-    </div>
-
 
     <div class="form-actions">
       <%= button Spree.t(:search), 'search' %>
@@ -44,8 +52,7 @@
       <tr>
         <th>Order Number</th>
         <th>Completed</th>
-        <th>Company</th>
-        <th>Address</th>
+        <th>Organization</th>
         <th><%= Spree.t(:sku) %></th>
         <th><%= Spree.t(:quantity) %></th>
         <th>Unit Price</th>
@@ -63,7 +70,6 @@
           <td><%= line.number %></td>
           <td><%= line.completed_date %></td>
           <td><%= line.company %></td>
-          <td><%= line.billing_address %></td>
           <td><%= line.sku %></td>
           <td><%= line.quantity %></td>
           <td><%= line.unit_price %></td>

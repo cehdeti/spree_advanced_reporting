@@ -72,6 +72,7 @@ Spree::Admin::ReportsController.class_eval do
 
   def order_details
     @report = Spree::AdvancedReport::OrderDetailReport.new(params)
+    @groups = Spree::Group.all
     respond_to do |format|
       format.html { render template: 'spree/admin/reports/order_details' }
       format.csv { send_data @report.to_csv }
